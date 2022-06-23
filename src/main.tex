@@ -197,7 +197,7 @@
                         \item Überprüfen ob neues Feld innerhalb des Spielbretts \& ob Feld noch nicht besucht
                         \item Überprüfen ob rekursiver Aufruf Abbruchsbedingung erreicht. Wenn ja: \texttt{return true;}
                         \item Falls beide Bedingungen (4, 5) nicht erfüllt sind $\to$ Markierung von Feld entfernen
-                        und mit \texttt{return true;} backtracken
+                        und mit \texttt{return false;} backtracken
                     \end{enumerate}
                     \textcolor{subsectioncolor}{Java}
                     \begin{lstlisting}
@@ -725,7 +725,7 @@
                 \includegraphics[scale=0.12]{graphic/06_adt_beispiele}
 
             \columnbreak
-        
+
             \section{ADT (abstract data type)}
             Unterschied zur {\bfseries Datenstruktur}:
             \begin{itemize}
