@@ -81,6 +81,21 @@
                         ...
                 \end{lstlisting}
 
+            \subsection{Weitere Beispiele (super / extends)}
+                \begin{tabular}{|p{3cm}|p{3cm}|}
+                    \hline
+                    \texttt{class GraphicStack<T extends Graphic>} & \texttt{Stack<? super Graphic> stack;} \\
+                    \hline
+                    Jeder {\bfseries subtyp} von \texttt{Graphic} ist zugelassen & Jeder {\bfseries super-typ} ist
+                    zugelassen \\
+                    \texttt{GraphicStack<Rectangle>} $\to$ OK & \texttt{stack = new Stack<Object>();} $\to$ OK \\
+                    \texttt{GraphicStack<Circle>} $\to$ OK & \texttt{stack = new Stack<Rectangle>();} $\to$ Fail \\
+                    \texttt{GraphicStack<Graphic> } $\to$ OK & \\
+                    \texttt{GraphicStack<String>} $\to$ Fail & \\
+                    \texttt{GraphicStack<Object>} $\to$ Fail, & \\
+                    \hline
+                \end{tabular}
+
         \section{Listen und Arrays}
             \subsection{Arrays}
                 \begin{itemize}
@@ -385,10 +400,8 @@
                         return -1;
                     }
                 \end{lstlisting}
-
                 \subsubsection{Mergesort}
                     $\to$ siehe Sortieralgorithmen $\to$ Mergesort
-
             \subsection{Dynamische Programmierung}
             \textcolor{subsectioncolor}{Fibonacci Beispiel {\bfseries Iterativ}}
             \begin{lstlisting}
@@ -472,7 +485,20 @@
                     \end{itemize}
                 \end{itemize}
 
-            \subsection{Operationen Zählen}
+            \subsection{Laufzeit-Beweis Beispiel}
+                Beweisen Sie: $8n^4 + 3n^2 + 4$ ist $O(n^4)$ \\
+                Gesucht: $c > 0$ und $n_0 \geq 1$, so dass $8n^4 + 3n^2 + 4 \leq cn^4$ für $n \geq n_0$ \\
+                  \\
+                $8n^4 + 3n^2 + 4 \leq cn^4$\\
+                $\Leftrightarrow 3n^2 + 4 \leq cn^4 - 8n^4$\\
+                $\Leftrightarrow 3n^2 + 4 \leq n^4(c-8)$\\
+                $\Leftrightarrow \frac{3n^2 + 4}{c-8} \leq n^4$\\
+                $\Rightarrow c = 9$\\
+                $\Leftrightarrow 3n^2 + 4 \leq n^4$\\
+                $\Leftrightarrow 4 \leq n^4 - 3n^2$\\
+                $\Rightarrow n = 2$\\
+
+        \subsection{Operationen Zählen}
                 \includegraphics[scale=0.17]{graphic/04_primitive_operationen_zaehlen}
 
             \subsection{Empirie / Empirische Analyse}
@@ -495,8 +521,16 @@
                 \end{itemize}
 
                 Wichtig: Abgrenzung Empirische Analyse, Theoretische Analyse mit O-Notation
-        
+        \columnbreak
         \section{Sortieralgorithmen}
+            \subsection{Swap-Methode für Algorithmen}
+            \begin{lstlisting}
+                    private static void swap(int[] array, int i, int j) {
+                        int temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+            \end{lstlisting}
             \subsection{Bogosort}
                 \begin{tabular}{|l|}
                     \hline
@@ -542,7 +576,6 @@
                     Best Case: $O(n)$ \\
                     \hline
                 \end{tabular}
-
             \subsection{Selection Sort}
                 \begin{itemize}
                     \item Elementarer Sortieralgorithmus
@@ -692,7 +725,7 @@
                 \includegraphics[scale=0.12]{graphic/06_adt_beispiele}
 
             \columnbreak
-
+        
             \section{ADT (abstract data type)}
             Unterschied zur {\bfseries Datenstruktur}:
             \begin{itemize}
@@ -1866,6 +1899,14 @@
                         }
                     }
                     \end{lstlisting}
+
+        \section{File-IO}
+            \subsection{FileReader}
+                \includegraphics[scale=0.15]{graphic/19_file_reader}
+            \subsection{FileWriter}
+                \includegraphics[scale=0.15]{graphic/20_file_writer}
+            \subsection{BufferedReader - Read Lines}
+                \includegraphics[scale=0.15]{graphic/21_bufferedreader_line}
 
     \end{multicols*}
 
