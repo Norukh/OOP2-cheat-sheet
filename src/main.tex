@@ -246,11 +246,11 @@
                 \subsubsection{Fakultät}
                     \textcolor{subsectioncolor}{Funktion}
                     \newline
-                    f(n) =
+                    $f(n) =
                     \begin{cases}
                         1 & if \; n=0 \\
                         n \cdot f(n-1) & else
-                    \end{cases}
+                    \end{cases}$
                     \newline
 
                     \textcolor{subsectioncolor}{Java Beispiel}
@@ -269,7 +269,6 @@
                         \item können leicht in nicht-rekursive Algorithmen umgewandelt werden
                         \item nicht-rekursive Algorithmen benötigen meist weniger Ressourcen
                     \end{itemize}
-                    \newline
                     \textcolor{subsectioncolor}{Java Beispiel}
                     \begin{lstlisting}
                     private static int tailrecsum(int x, int total) {
@@ -729,14 +728,12 @@
                             \item header \& trailer: Sentinels / Guards
                         \end{itemize}
                     \end{itemize}
-                    \newline
                     \includegraphics[scale=0.2,width=\columnwidth]{graphic/02_doubly-linkedlist}
 
         \subsection{Stack}
             \begin{itemize}
                 \item Anwendung: Parser / Parsen von verschachtelten Klammern (())([()])
             \end{itemize}
-            \newline
             \begin{lstlisting}
                     public interface Stack<E> {
                         int size();
@@ -746,8 +743,6 @@
                         E pop();
                     }
             \end{lstlisting}
-            \newline
-            \newline
             \texttt{resize()} statt Exception
             \begin{lstlisting}
                     public void push(Item item) {
@@ -1108,7 +1103,7 @@
                         while l > 1 do
                             Vertausche F[1] und F[l];
                             Versenke F[1] im Heap F[1 ... l - 1];
-                            l := l – 1
+                            l := l - 1
                         od
                 \end{lstlisting}
                 \subsubsection{Java Implementation}
