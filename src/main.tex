@@ -1176,6 +1176,12 @@
                 \end{lstlisting}
 
             \subsection{BinarySearchTree}
+                \subsubsection{Rotations}
+                    \includegraphics[scale=0.15]{graphic/22_avl_baum_rr-rotation}
+                    \includegraphics[scale=0.15]{graphic/23_avl_baum_ll-rotation}
+                    \includegraphics[scale=0.15]{graphic/24_avl_baum_rl-rotation}
+                    \includegraphics[scale=0.15]{graphic/25_avl_baum_lr-rotation}
+
                 \begin{lstlisting}
                     package ch.ost.oop.ex.task4;
 
@@ -1221,6 +1227,7 @@
 
                         }
 
+                        // (LR) Links-Rechts-Rotation
                         private Node<E> rotateWithLeftChild(Node<E> node2) {
                             Node<E> node1 = node2.getLeft();
                             node2.setLeft(node1.getRight());
@@ -1233,6 +1240,7 @@
                             return node1;
                         }
 
+                        // (RL) Rechts-Links-Rotation
                         private Node<E> rotateWithRightChild(Node<E> node1) {
                             Node<E> node2 = node1.getRight();
                             node1.setRight(node2.getLeft());
@@ -1245,12 +1253,14 @@
                             return node2;
                         }
 
+                        // (LL) Links-Links-Rotation
                         private Node<E> doubleWithLeftChild(Node<E> node3) {
                             node3.setLeft(rotateWithRightChild(node3.getLeft()));
 
                             return rotateWithLeftChild(node3);
                         }
 
+                        // (RR) Rechts-Rechts-Rotation
                         private Node<E> doubleWithRightChild(Node<E> node1) {
                             node1.setRight(rotateWithLeftChild(node1.getRight()));
 
