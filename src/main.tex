@@ -708,12 +708,25 @@
                     \end{lstlisting} \\
                     \hline
                     \begin{lstlisting}
-                    static void quickSort(int[] arr, int low, int high) {
+                    public static void quickSort(int[] arr, int low, int high) {
                         if (low < high) {
                             int pi = partition(arr, low, high);
                             quicksort(arr, low, pi - 1);
                             quicksort(arr, pi + 1, high);
                         }
+                    }
+
+                    public static int partition(int[] arr, int start, int end) {
+                        int pivotElement = arr[start];
+                        int pivotIndex = start + 1;
+                        for (int i = start + 1; i < end; ++i) {
+                            if (arr[i] <= pivotElement) {
+                                swap(arr, i, pivotIndex);
+                                ++pivotIndex;
+                            }
+                        }
+                        swap(arr, start, pivotIndex - 1);
+                        return pivotIndex - 1;
                     }
                     \end{lstlisting} \\
                     \hline
@@ -815,8 +828,9 @@
                             return (t + 1);
                         }
 
-                        public boolean isEmpty(){
+                        public boolean isEmpty() {
                             return (t == -1);
+                        }
 
                         public void push(E element) throws IllegalStateException {
                             if (size() == data.length)
@@ -826,7 +840,7 @@
 
                         public E top() {
                             if (isEmpty()) return null;
-                                return data[t];
+                            return data[t];
                         }
 
                         public E pop() {
