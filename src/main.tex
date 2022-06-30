@@ -1435,11 +1435,87 @@
                     }
                     \end{lstlisting}
 
-        %\section{Design Patterns}
-        %    \subsection{Iterator}
-        %    \subsection{Adapter}
-        %    \subsection{Visitor}
-        %    \subsection{Template}
+        \section{Design Patterns}
+            \subsection{Iterator}
+                Auf Elemente eines Aggregatobjekts sequentiell zugreifen, ohne zugrundeliegende Repräsentation offenzulegen.\\
+                \begin{lstlisting}
+                    public class ArrayList<T> {
+                        // Implementation
+                        public Iterator<T> iterator() {
+                            return new ArrayListIterator<>(this);
+                        }
+                    }
+                    public class ArrayListIterator<T> implements Iterator<T> {
+                        private int currentIndex;
+                        private ArrayList<T> arraylist;
+                        public ArrayListIterator(ArrayList<T> arraylist) {
+                            this.arraylist = arraylist;
+                        }
+                        @Override
+                        public boolean hasNext() { return currentIndex < arraylist.size(); }
+                        @Override
+                        public T next() { return arraylist.get(currentIndex++); }
+                    }
+                \end{lstlisting}
+            \subsection{Adapter}
+                Existierende Klasse verwenden, deren Schnittstelle nicht der benötigten Schnittstelle entspricht.\\
+                \begin{lstlisting}
+                    public class LinkedStack<E> implements Stack<E>{
+                        private LinkedList<E> list = new LinkedList<>();
+                        public int size() { return list.size(); }
+                        public boolean isEmpty() { return list.isEmpty(); }
+                        public void push(E item) { list.addFirst(item); }
+                        public E top() { return list.getFirst(); }
+                        public E pop() { return list.remove(); }
+                    }
+                \end{lstlisting}
+            \subsection{Visitor}
+                Trennt einen Algorithmus von der Datenstruktur, auf welcher er angewendet wird.\\
+                \includegraphics[scale=0.275]{graphic/26_visitor_uml.png}
+                \begin{lstlisting}
+                    public interface MuseumPart {
+                        void accept(MuseumVisitor visitor);
+                    }
+                    public class Museum implements MuseumPart {
+                        private List<MuseumPart> areas;
+                        @Override
+                        public void accept(MuseumVisitor visitor) {
+                            visitor.visit(this);
+                            for (MuseumPart area : areas) {
+                                area.accept(visitor);
+                            }
+                            visitor.leave(this);
+                        }
+                    }
+                    public class Area implements MuseumPart {
+                        @Override
+                        public void accept(MuseumVisitor visitor) {
+                            visitor.visit(this);
+                            visitor.leave(this);
+                        }
+                    }
+                    public interface MuseumVisitor {
+                        void visit(Museum museum);
+                        void visit(Area area);
+                    }
+                    public class BirdMuseumVisitor implements MuseumVisitor {
+                        @Override
+                        public void visit(Museum museum) { // Actions on visit }
+                        @Override
+                        public void leave(Museum museum) { // Actions on leave }
+                    }
+
+                \end{lstlisting}
+            \subsection{Template}
+                Rumpf eines Algorithmus definieren, Teilschritte später in Subklassen spezifizieren (z.B. Frameworks).
+                \begin{lstlisting}
+                    public abstract class EulerTour<E> {
+                        protected abstract void toDefine();
+                        public void preDefined() {
+                            // Algorithmus
+                        }
+                    }
+                \end{lstlisting}
 
         \section{Hashing}
             \textcolor{subsectioncolor}{Eigenschaften guter Hashfunktionen}
