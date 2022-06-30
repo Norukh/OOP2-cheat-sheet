@@ -521,8 +521,10 @@
                 \end{itemize}
 
                 Wichtig: Abgrenzung Empirische Analyse, Theoretische Analyse mit O-Notation
-        \columnbreak
         \section{Sortieralgorithmen}
+            \begin{itemize}
+                \item Elemente mit übergebener Funktion in logische Ordnung bringen
+            \end{itemize}
             \subsection{Swap-Methode für Algorithmen}
             \begin{lstlisting}
                     private static void swap(int[] array, int i, int j) {
@@ -532,7 +534,7 @@
                     }
             \end{lstlisting}
             \subsection{Bogosort}
-                \begin{tabular}{|l|}
+                \begin{tabular}{|p{6.55cm}|}
                     \hline
                     \begin{lstlisting}
                     void bogo(int[] arr) {
@@ -557,8 +559,9 @@
             \subsection{Insertionsort}
                 \begin{itemize}
                     \item Elementarer Sortieralgorithmus
+                    \item Eignet sich für kleinere Datenmengen oder für Einfügen in eine bereits sortierte Liste
                 \end{itemize}
-                \begin{tabular}{|l|}
+                \begin{tabular}{|p{6.55cm}|}
                     \hline
                     \begin{lstlisting}
                     public static void sort(Comparable[] a) {
@@ -573,14 +576,14 @@
                     \hline
                     Worst Case: $O(n^2)$ \\
                     Average Case: $O(n^2)$ \\
-                    Best Case: $O(n)$ \\
+                    Best Case: $O(n)$ (Wenn Liste bereits sortiert oder fast alle Objekte sind etwa am richtigen Ort)\\
                     \hline
                 \end{tabular}
             \subsection{Selection Sort}
                 \begin{itemize}
                     \item Elementarer Sortieralgorithmus
                 \end{itemize}
-                \begin{tabular}{|l|}
+                \begin{tabular}{|p{6.55cm}|}
                     \hline
                     \begin{lstlisting}
                     static void selectionSort(int[] array) {
@@ -605,7 +608,7 @@
                 \end{tabular}
 
             \subsection{Bubblesort}
-                \begin{tabular}{|l|}
+                \begin{tabular}{|p{6.55cm}|}
                     \hline
                     \begin{lstlisting}
                     bubbleSort(Array a) {
@@ -621,7 +624,7 @@
                     \hline
                     Worst Case: $O(n^2)$ \\
                     Average Case: $O(n^2)$ \\
-                    Best Case: $O(n)$ \\
+                    Best Case: $O(n)$ (Wenn Array bereits nach Sortierkriterium sortiert ist)\\
                     \hline
                 \end{tabular}
 
@@ -631,8 +634,9 @@
                     \item Divide and Conquer (Teile und Herrsche)
                     \item Rekursiver Sortieralgorithmus
                     \item Zusätzlicher Speicherbedarf beim Merge
+                    \item Quicksort überlegen, aber benötigt viel Speicherplatz
                 \end{itemize}
-                \begin{tabular}{|l|}
+                \begin{tabular}{|p{6.55cm}|}
                     \hline
                     \begin{lstlisting}
                     int[] merge(int[] leftArray, int[] rightArray) {
@@ -689,7 +693,7 @@
                     \item Quicksort rekursiv auf beiden Unter-Arrays aufrufen
                     \item Elemente des ersten Unter-Array, Pivot und Elemente des zweiten Unter-Arrays zurückgeben
                 \end{enumerate}
-                \begin{tabular}{|l|}
+                \begin{tabular}{|p{6.55cm}|}
                     \hline
                     \textcolor{subsectioncolor}{Idee} \\
                     \begin{lstlisting}
@@ -713,7 +717,10 @@
                     }
                     \end{lstlisting} \\
                     \hline
-                    Worst Case: $O(n^2)$ \\
+                    Worst Case: $O(n^2)$ (Wenn das Pivot Element immer das letzte Element einer Liste ist und die Liste
+                    eigentlich schon sortiert ist und die Liste eigentlich schon sortiert ist. Die Teillisten würden
+                    nur um 1 kleiner werden bei der Rekursion. Im besten Fall wählt man Pivot so, dass die Teillisten
+                    links und rechts ungefähr gleich gross sind.) \\
                     Average Case: $O(n*log(n))$ \\
                     Best Case: $O(n*log(n))$ \\
                     \hline
@@ -724,7 +731,6 @@
                 \newline
                 \includegraphics[scale=0.12]{graphic/06_adt_beispiele}
 
-            \columnbreak
 
             \section{ADT (abstract data type)}
             Unterschied zur {\bfseries Datenstruktur}:
@@ -1175,7 +1181,7 @@
                     }
                 \end{lstlisting}
 
-            \subsection{BinarySearchTree}
+            \subsection{BinarySearchTree - $O(\log(n))$}
                 \subsubsection{Rotations}
                     \includegraphics[scale=0.15]{graphic/22_avl_baum_rr-rotation}
                     \includegraphics[scale=0.15]{graphic/23_avl_baum_ll-rotation}
